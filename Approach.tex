@@ -1,2 +1,46 @@
 \section{Approach}
-The Approach goes here.
+In the previous section we introduced IMCL's model approach to complex systems and the formal definition of the model. Based on this, we will introduce how to generate object code from the population IMCL model. 
+
+TODO: fig The approach 
+
+The specific implementation details of the population model generation technique have been proposed in our previous published papers. The advantage of using the ICML modeling method is that we can intelligently split a complex model into multiple sub-models given the constraints of the resource and controller constraints. The sub-models can communicate with each other and achieve the same function as the original model. The generated sub-models correspond to specific target platforms respectively, and the main research work in this paper is to realize the code generation work from the IMCL model to different target platforms.
+
+
+\subsection{Conversion of IMCL Model and Heterogeneous Platform}
+We conduct research on different platforms, including FPGA, PLC, and PC. The research mainly includes how to use IMCL to represent these heterogeneous systems.
+
+\subsubsection{\textbf{Conversion of FPGA and IMCL Model}}
+FPGA (Field-Programmable Gate Array, Field Programmable Gate Array), due to its customizable features, is widely used in medical equipment, rail traffic control and other fields. The system developed by the VHDL language used by the FPGA includes the following basic parts:
+
+\begin{itemize}
+\item \textbf{Library} \ Declares the repository that the program needs to use, including the std, work, and user-defined libraries. Library contains a variety of design elements, from a program perspective, can be seen as a collection of data.
+\item \textbf{Use} \ This section is related to the Library and declares the specific resources used by the corresponding resource library in the Library.
+\item \textbf{Entity} \ This area is the entity declaration of the VHDL program and mainly describes the relationship between the input, output, and ports of the system circuit.
+\item \textbf{Architecture} \ The architecture is the behavior part of the circuit. The architecture supports the parallel and serial of the program. The main description is its internal implementation process, including data flow, structure description, behavior description and so on.
+\item \textbf{Configuration} \ The main purpose of the configuration is to select the required units from the library and form the required system. From the perspective of system resources, it is a process of choice and combination.
+\end{itemize}
+
+TODO fig FPGA-IMCL
+
+Combined with the characteristics of the previously analyzed IMCL model, we can see that there are commonalities between the two architectures. After ignoring the irrelevant platform details, IMCL can model the behavior described by VHDL. As shown in the figure, the library and package structure represented in VHDL can be abstracted into resources in the process of modeling with IMCL after ignoring platform dependencies. The entity represents the design of the circuit structure of the system and can also be used as a description of resources. The architecture in VHDL mainly includes the structure description, data flow description, and system line description. Essentially, they describe the functional characteristics of the internal structure and correspond to the events described in IMCL.
+
+
+\subsubsection{\textbf{Conversion of PLC and IMCL Model}}
+PLC (Programmable Logic Controller) is a kind of programmable control industrial control computer. PLC takes the microprocessor as the core and realizes the control of the system through software. There are many types of PLCs, but their structural principles are basically the same: they include processors, storage, I/O ports, and network communications. Take the language IEC 61131-3 language by PLC as an example, the design language includes five forms: LD(Ladder Diagram),IL(Instruction List),FBD(Function Block Diagram),SFC(Sequential function chart),ST(Structured Text).
+
+TODO: fig PLC-IMCL
+
+We can use IMCL to represent the operating mode of the PLC. The working phase of the PLC is to periodically scan cyclically, and it will continue to work when there is no interruption or other situations. The general PLC operating mode can be divided into five phases:
+
+\begin{itemize}
+  \item \textbf{Internal processing stage}: detecting the system's current ready state and resetting the internal timer;
+  \item \textbf{Communication service phase}: The PLC has a communication function. The external control module can communicate with each other and can also receive signal commands from other controllers.
+  \item \textbf{Input processing stage}: read the information data of the mounted peripherals and sample the data into the system at one time.
+  \item \textbf{Program processing stage}: This stage is the core stage of the PLC control process and is the main body of the PLC program, including condition control, numerical calculation, and logic conversion. This stage reflects the functional behavior of the system.
+  \item \textbf{Output stage}: After the main program runs, data is loaded to the outside through the output mechanism.
+\end{itemize}
+
+
+
+
+
