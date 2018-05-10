@@ -1,7 +1,7 @@
 \section{Approach}
-In the previous section we introduced IMCL's model approach to complex systems and the formal definition of the model. Based on this, we will introduce how to generate object code from the population IMCL model. 
+In the previous section we introduced IMCL's model approach to complex systems and the formal definition of the model. Based on this, we will introduce how to generate object code from the population IMCL model.
 
-TODO: fig The approach 
+TODO: fig The approach
 
 The specific implementation details of the population model generation technique have been proposed in our previous published papers. The advantage of using the ICML modeling method is that we can intelligently split a complex model into multiple sub-models given the constraints of the resource and controller constraints. The sub-models can communicate with each other and achieve the same function as the original model. The generated sub-models correspond to specific target platforms respectively, and the main research work in this paper is to realize the code generation work from the IMCL model to different target platforms.
 
@@ -40,7 +40,21 @@ We can use IMCL to represent the operating mode of the PLC. The working phase of
   \item \textbf{Output stage}: After the main program runs, data is loaded to the outside through the output mechanism.
 \end{itemize}
 
+A unified description of the external physical resources associated with the input and output modules, peripherals, etc. The abstract resource object is a program variable, which can facilitate resource scheduling and set constraint conditions. For the main program of the PLC, we extract the main part of the communication services, program execution process, and then use an event-driven way to describe. Finally, the PLC application can be described by the IMCL model.
+
+\subsubsection{Conversion of PC and IMCL Model}
+PC (personal computer) is often widely applied to industrial systems because of its advantages such as high-speed processing speed, reliable operation platform, mass storage, networking, and friendly human-computer interaction. For example PCBCS, PC can communicate collaborate with other mainstream PC or PLC systems implement complex functional requirements. In PCBCS, PC's communication technology is one of its greatest advantages. PC can be compatible with almost all communication protocols in the mainstream, so it is very beneficial to the design of complex systems. The common PC system design language is C. Due to its good compatibility, portability, and high execution efficiency, it is widely used in industrial-grade system design.
+
+TODO fig
+
+As shown in the figure, a typical PC-style control system design can be represented as shown in the above figure. The CPU is responsible for the execution of the program. The entire system is composed of multiple independent threads. Each thread represents the relevant task. . The system has independent communication, including data input and output. When we use IMCL to model, we represent the multi-threading as a set of concurrent trigger events; the communication of system functions can be represented using the IMCL abstract communication protocol; the control relationship between the system and external device resources, using the resources in IMCL Scheduling to model.
 
 
+\subsection{Code generation configuration}
+The essence of the system model is to abstract away some irrelevant details and only pay attention to a research method to study the characteristics of the object. Therefore, when we want to be able to generate code from model automation, we need to supplement the missing details. In the code generation process from IMCL to a specific target platform, configuration information needed  includes variable conversion, communication protocol method between systems, and the driving relationship between a controller and specific devices. Here we use \emph{Conf} to represent these configuration: $Conf = \langle V_{map}, \ C_{map}, \ D_{map} \rangle$. 
 
+$V_{map}$ represents the variable mapping relationship between the model and the specified platform controller: $V_{map} = V_{imcl} \rightarrow (V_{plc} | V_{fpga}| V_{pc})$. The $V_{map}$ refers to the variables $V_{in} \cup V_{out} \cup V_{mess} \cup V_{local} \cup V_{res}$ in IMCL;  $V_{plc} | V_{fpga} | V_{pc}$ corresponds to a collection of variables for specific heterogeneous platforms.
 
+$C_{map}$ represents the mapping relationship between the communication method in the model and the communication protocol used by a particular platform: $C_{map} = C_{imcl} \rightarrow (C_{plc} | C_{fpga} | C_{pc})$. $C_{imcl} = ch!Vmess | ch?V_{mess}$ refers to the formal representation of communications in IMCL; $C_{plc} | C_{fpga} | C_{pc}$ refers to the definition and implementation of specific communication protocols for different platforms.
+
+$D_{map}$ represents the mapping relationship between the driver representation in the model and the drivers of controller and devices in  particular platforms: $D_{map} = D_{imcl} \rightarrow (D_{plc} | D_{fpga} | D_{soc})$.  $D_{imcl}=a_{data} \ll Dev | a_{data} \gg Dev$ refers to the scheduling relationship between the controller and peripheral physical devices in IMCL, and $(D_{plc} | D_{fpga} | D_{pc})$ corresponds to specific target platforms that need to implement the device scheduling driver. 

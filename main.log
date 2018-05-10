@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2018.3.9)  8 MAY 2018 17:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2018.3.9)  10 MAY 2018 08:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -798,32 +798,32 @@ Missing character: There is no ˆ in font cmr7!
 Missing character: There is no — in font cmr7!
 
 
-LaTeX Font Warning: Command \normalsize invalid in math mode on input line 51.
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 53.
 
 
-LaTeX Font Warning: Command \normalsize invalid in math mode on input line 68.
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 70.
 
 
-LaTeX Font Warning: Command \normalsize invalid in math mode on input line 81.
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 83.
 
 Missing character: There is no Î in font cmr10!
 Missing character: There is no ” in font cmr10!
 
-LaTeX Font Warning: Command \normalsize invalid in math mode on input line 96.
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 98.
 
 
-LaTeX Font Warning: Command \normalsize invalid in math mode on input line 104.
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 106.
 
 
 
-Overfull \hbox (8.17856pt too wide) detected at line 110
+Overfull \hbox (8.17856pt too wide) detected at line 112
 [] []
  []
 
 Missing character: There is no Î in font ptmr7t!
 Missing character: There is no µ in font ptmr7t!
-[2]) (./Approach.tex) (./Rules.tex) (./CaseStudy.tex) (./Conclusion.tex
-[3]) (./reference.tex)
+[2]) (./Approach.tex [3]) (./Rules.tex) (./CaseStudy.tex) (./Conclusion.tex)
+(./reference.tex)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -836,15 +836,13 @@ Before submitting the final camera ready copy, remember to:
  process uses the appropriate paper size.
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 377.
-[4
-
-]
+[4]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 377.
  (./main.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 377.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 377.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 914AB88D4448F28E8F86D80574F044E5;955.
+(rerunfilecheck)             Checksum: A2F252D527942C56AF95CFBC8527ECB2;1125.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 377.
  )
 (\end occurred inside a group at level 1)
@@ -852,10 +850,10 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 377.
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 11179 strings out of 493014
- 168861 string characters out of 6128714
+ 11183 strings out of 493014
+ 168931 string characters out of 6128714
  290349 words of memory out of 5000000
- 14435 multiletter control sequences out of 15000+600000
+ 14437 multiletter control sequences out of 15000+600000
  50744 words of font info for 119 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
  44i,14n,35p,830b,6368s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -875,10 +873,10 @@ utmb8a.pfb><d:/Program Files/Tex/texlive/2016/texmf-dist/fonts/type1/urw/times/
 utmbi8a.pfb><d:/Program Files/Tex/texlive/2016/texmf-dist/fonts/type1/urw/times
 /utmr8a.pfb><d:/Program Files/Tex/texlive/2016/texmf-dist/fonts/type1/urw/times
 /utmri8a.pfb>
-Output written on main.pdf (4 pages, 155605 bytes).
+Output written on main.pdf (4 pages, 161166 bytes).
 PDF statistics:
- 159 PDF objects out of 1000 (max. 8388607)
- 138 compressed objects within 2 object streams
- 33 named destinations out of 1000 (max. 500000)
- 121 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 167 PDF objects out of 1000 (max. 8388607)
+ 146 compressed objects within 2 object streams
+ 35 named destinations out of 1000 (max. 500000)
+ 137 words of extra memory for PDF output out of 10000 (max. 10000000)
 

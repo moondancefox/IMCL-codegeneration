@@ -1,5 +1,5 @@
 \section{Preliminary}
-IMCL is an event-triggered language. 
+IMCL is an event-triggered language.
 The purpose of IMCL modeling language design is to model the actual industrial control domain system.
 
 
@@ -28,7 +28,9 @@ The entire system modeling process mainly includes the following three aspects:
 \subsection{IMCL formal model}
 In order to better understand the characteristics of the IMCL model, we introduce the characteristics of the model from a formal point of view. For any system, modeling from the perspective of system trigger events using IMCL language, the system model can be expressed as follows:
 
-\[ Prog = \]
+\begin{displaymath}
+Prog = \overset{n}{\underset{i=1}{\bowtie}} T_{i}, \ \ n \in N^{+}
+\end{displaymath}
 
 From the model refinement point of view, each system $Prog$ program can be seen as a set of trigger events, and then each trigger event $T_i$ is a set of ordered command expressions, each command expression can be seen as a system execution The smallest unit of calculation. For a system, the IMCL language is used for modeling from the perspective of system trigger events. The system model can be expressed as follows:
 
@@ -87,9 +89,9 @@ Since the loop statement has been used to indicate that the current program ente
 \end{equation*}
 
 
-\begin{definition} \textbf{Communication} $E_{ch} = ch!V_{mess} |ch?V_{mess}$ 
+\begin{definition} \textbf{Communication} $E_{ch} = ch!V_{mess} |ch?V_{mess}$
 \end{definition}
-Where $ch!V_{mess}$ that send messages, is the active process of the program. $ch?Vmess$ that the system receives the message, is a similar to the ready-passive process. $\vartriangle$  is the current state of the program execution, $\vartriangle^{'}$ is the state of the program change. We represent the transmission mechanism of the communication. 
+Where $ch!V_{mess}$ that send messages, is the active process of the program. $ch?Vmess$ that the system receives the message, is a similar to the ready-passive process. $\vartriangle$  is the current state of the program execution, $\vartriangle^{'}$ is the state of the program change. We represent the transmission mechanism of the communication.
 
 $ch!Vmess$ defines the process as when the model is actively sending out messages, it will change the system message variables, modify the message variables, and the system state will change. The expression is as follows:
 \begin{equation*}
@@ -98,7 +100,7 @@ $ch!Vmess$ defines the process as when the model is actively sending out message
         \langle ch!, V_{mess}, \vartriangle \rangle \rightarrow \langle ch!, V_{mess}^{'}, \vartriangle^{'} \rangle
     \end{aligned}
 \end{equation*}
- 
+
 $ch?V_{mess}?$ defines the process as the model is in the process of accepting the message, and its program state remains unchanged until it receives the target message from the channel.
 \begin{equation*}
     \normalsize
