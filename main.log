@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2018.3.9)  10 MAY 2018 08:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2018.3.9)  11 MAY 2018 11:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -753,41 +753,41 @@ LaTeX Info: Redefining \nameref on input line 317.
 \openout3 = `main.out'.
 
  (./authors.tex)
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 331.
-LaTeX Font Info:    Try loading font information for U+stmry on input line 331.
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 334.
+LaTeX Font Info:    Try loading font information for U+stmry on input line 334.
 
 
 (d:/Program Files/Tex/texlive/2016/texmf-dist/tex/latex/stmaryrd/ustmry.fd)
-LaTeX Font Info:    Try loading font information for U+msa on input line 331.
+LaTeX Font Info:    Try loading font information for U+msa on input line 334.
 
 (d:/Program Files/Tex/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 331.
+LaTeX Font Info:    Try loading font information for U+msb on input line 334.
 
 (d:/Program Files/Tex/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 331.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 334.
 
 (d:/Program Files/Tex/texlive/2016/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Try loading font information for U+wasy on input line 331.
+LaTeX Font Info:    Try loading font information for U+wasy on input line 334.
 
 (d:/Program Files/Tex/texlive/2016/texmf-dist/tex/latex/wasysym/uwasy.fd
 File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
 )
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 331.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 334.
 
 
 (d:/Program Files/Tex/texlive/2016/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 331.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 334.
 
-** WARNING: \thanks is locked out when in conference mode (line 331).
+** WARNING: \thanks is locked out when in conference mode (line 334).
 (./abstract.tex) (./Introduction.tex) (./Preliminary.tex [1{d:/Program Files/Te
 x/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
@@ -822,8 +822,37 @@ Overfull \hbox (8.17856pt too wide) detected at line 112
 
 Missing character: There is no Î in font ptmr7t!
 Missing character: There is no µ in font ptmr7t!
-[2]) (./Approach.tex [3]) (./Rules.tex) (./CaseStudy.tex) (./Conclusion.tex)
-(./reference.tex)
+[2]) (./Approach.tex [3]) (./Rules.tex
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6.25002> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 21.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 49.
+
+(d:/Program Files/Tex/texlive/2016/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+[4]
+Missing character: There is no â in font cmr7!
+Missing character: There is no ˆ in font cmr7!
+Missing character: There is no — in font cmr7!
+Missing character: There is no â in font cmr7!
+Missing character: There is no ˆ in font cmr7!
+Missing character: There is no — in font cmr7!
+Missing character: There is no â in font cmr7!
+Missing character: There is no ˆ in font cmr7!
+Missing character: There is no — in font cmr7!
+Missing character: There is no â in font cmr7!
+Missing character: There is no ˆ in font cmr7!
+Missing character: There is no — in font cmr7!
+Missing character: There is no â in font cmr7!
+Missing character: There is no ˆ in font cmr7!
+Missing character: There is no — in font cmr7!
+Missing character: There is no â in font cmr7!
+Missing character: There is no ˆ in font cmr7!
+Missing character: There is no — in font cmr7!
+Missing character: There is no â in font cmr7!
+Missing character: There is no ˆ in font cmr7!
+Missing character: There is no — in font cmr7!
+ [5]) (./CaseStudy.tex) (./Conclusion.tex) (./reference.tex)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -835,48 +864,54 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 377.
-[4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 377.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 380.
+[6
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 380.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 377.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 377.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 380.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 380.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: A2F252D527942C56AF95CFBC8527ECB2;1125.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 377.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 380.
  )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 11183 strings out of 493014
- 168931 string characters out of 6128714
- 290349 words of memory out of 5000000
- 14437 multiletter control sequences out of 15000+600000
- 50744 words of font info for 119 fonts, out of 8000000 for 9000
+ 11289 strings out of 493014
+ 170342 string characters out of 6128714
+ 290380 words of memory out of 5000000
+ 14500 multiletter control sequences out of 15000+600000
+ 57227 words of font info for 134 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 44i,14n,35p,830b,6368s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 44i,18n,35p,1043b,6662s stack positions out of 5000i,500n,10000p,200000b,80000s
 {d:/Program Files/Tex/texlive/2016/texmf-dist/fonts/enc/dvips/b
 ase/8r.enc}<d:/Program Files/Tex/texlive/2016/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmmi10.pfb><d:/Program Files/Tex/texlive/2016/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmmi7.pfb><d:/Program Files/Tex/texlive/2016/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmr10.pfb><d:/Program Files/Tex/texlive/2016/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr7.pfb><d:/Program Files/Tex/texlive/2016/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/Program Files/Tex/texli
-ve/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><d:/Program Files/T
-ex/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><d:/Program
- Files/Tex/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:
-/Program Files/Tex/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/
-msam10.pfb><d:/Program Files/Tex/texlive/2016/texmf-dist/fonts/type1/urw/times/
-utmb8a.pfb><d:/Program Files/Tex/texlive/2016/texmf-dist/fonts/type1/urw/times/
-utmbi8a.pfb><d:/Program Files/Tex/texlive/2016/texmf-dist/fonts/type1/urw/times
-/utmr8a.pfb><d:/Program Files/Tex/texlive/2016/texmf-dist/fonts/type1/urw/times
-/utmri8a.pfb>
-Output written on main.pdf (4 pages, 161166 bytes).
+ublic/amsfonts/cm/cmmi6.pfb><d:/Program Files/Tex/texlive/2016/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmmi7.pfb><d:/Program Files/Tex/texlive/2016/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmmi9.pfb><d:/Program Files/Tex/texlive/2016/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/Program Files/Tex/texli
+ve/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><d:/Program Files/Te
+x/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/Program
+ Files/Tex/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><d:
+/Program Files/Tex/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7
+.pfb><d:/Program Files/Tex/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmsy8.pfb><d:/Program Files/Tex/texlive/2016/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmsy9.pfb><d:/Program Files/Tex/texlive/2016/texmf-dist/fonts/type1/
+public/amsfonts/symbols/msam10.pfb><d:/Program Files/Tex/texlive/2016/texmf-dis
+t/fonts/type1/urw/courier/ucrr8a.pfb><d:/Program Files/Tex/texlive/2016/texmf-d
+ist/fonts/type1/urw/times/utmb8a.pfb><d:/Program Files/Tex/texlive/2016/texmf-d
+ist/fonts/type1/urw/times/utmbi8a.pfb><d:/Program Files/Tex/texlive/2016/texmf-
+dist/fonts/type1/urw/times/utmr8a.pfb><d:/Program Files/Tex/texlive/2016/texmf-
+dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (6 pages, 208289 bytes).
 PDF statistics:
- 167 PDF objects out of 1000 (max. 8388607)
- 146 compressed objects within 2 object streams
- 35 named destinations out of 1000 (max. 500000)
+ 226 PDF objects out of 1000 (max. 8388607)
+ 199 compressed objects within 2 object streams
+ 64 named destinations out of 1000 (max. 500000)
  137 words of extra memory for PDF output out of 10000 (max. 10000000)
 

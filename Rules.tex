@@ -1,5 +1,133 @@
 \section{Rules}
 The IMCL model has features such as event triggering, message communication, and resource scheduling. This section describes the conversion rules for converting IMCL models into PLC programs from the perspective of code generation. Common techniques for code generation are based on ASTs, and so are ours. The abstract syntax tree is also called the AST syntax tree, which is the tree structure corresponding to the source code syntax. That is, for source code in a specific programming language, statements in the source code are mapped to each node in the tree by constructing a syntax tree. In the tree structure on the basis of IMCL, given by the code generation rules, the model may be implemented to generate the code for the target platform.
 
+\begin{algorithm}[htb!]
+\SetKwInOut{Input}{input}
+\SetKwInOut{Output}{output}
+\SetKwProg{Fn}{function}{}{}
+\SetKwFunction{DeepFirstVisit}{DeepFirstVisit}
+%\DontPrintSemicolon
+% \tiny\tiny\scriptsize\footnotesize\small\normalsize\large\Large\LARGE\huge\Huge\footnotesize\small\normalsize\large\Large\LARGE\huge\Huge
+% \liuhao
+\small
+\label{alg:algRule}
+    \caption{Collaboration of models.}
+    \KwIn{(1) IMCL code;  (2) Rules of  specific target platform;}
+    \BlankLine
+    \KwOut{Target platform code;}
+    \BlankLine
+    \BlankLine
 
- 
+    $AST_{Imcl}$ $\hookleftarrow_{AST}$ IMCL \;
+    \Fn{\DeepFirstVisit{$AST_{Imcl}$}}
+    {
+        \For{$\forall$ node $\in$ $AST_{Imcl}$}
+        {
+            type = getRuleType(node) \;
+            \If{type $\in$ Rule1}
+            {
+                variableHandler()\;
+            }
+            \If{type $\in$ Rule2}
+            {
+                eventHandler()\;
+            }
+            \If{type $\in$ Rule3}
+            {
+                structHandler()\;
+            }
+            \If{type $\in$ Rule4}
+            {
+                communicationHandler()\;
+            }
+            \If{type $\in$ Rule5}
+            {
+                scheduleHandler()\;
+            }
+        }
+    }
+\end{algorithm}
+
+
+As shown in \ref{alg:algRule}, the first step in heterogeneous multi-platform code generation is that we need to convert the IMCL code into a structured syntax tree AST. Next, we use the ANTLR tool to generate an abstract syntax tree of the IMCL model under the IMCL syntax. Then through the depth traversal of the tree structure, analyze the type of each node. Finally, we use the corresponding rules to convert according to the type of each node. \
+
+Next we will introduce the specific details of these different rule conversions:
+%\begin{itemize}
+%  \item \textbf{Rule 1} Conversion of variables\\
+%    There are 5 forms of variables of the IMCL program. These variables cover the basic variable types of IEC 61131-3, VHDL, and C. According to the definition of$V_{map} = V_{imcl} \rightarrow (V_{plc} | V_{fpga}| V_{pc})$, all variables in different controller programs can be represented by \emph{global variables}, \emph{local variables}, and \emph{static variables}. For each controller program, it is converted into a specific variable type in the program, such as int, string, and so on.
+%  \item 2
+%  \item 3
+%  \item 4
+%  \item 5
+%\end{itemize}
+
+
+\paragraph{\textbf{Rule 1: }} Conversion of variables
+
+There are 5 forms of variables of the IMCL program. These variables cover the basic variable types of IEC 61131-3, VHDL, and C. According to the definition of$V_{map} = V_{imcl} \rightarrow (V_{plc} | V_{fpga}| V_{pc})$, all variables in different controller programs can be represented by \emph{global variables}, \emph{local variables}, and \emph{static variables}. For each controller program, it is converted into a specific variable type in the program, such as \emph{int}, \emph{string}, and so on.
+
+\paragraph{\textbf{Rule 2: }} Conversion of events
+
+The form of the IMCL IPC model is a set of events in which events are concurrent. After the trigger condition of any event is satisfied, the subject of the respective event will be executed. Different programming languages have different ways of expressing events, and they will be converted separately for each of the three languages:
+
+\begin{itemize}
+  \item \textbf{IEC 61131-3 Language}: \ there is only SFC that expresses concurrency.
+
+      \ \ An SFC program is defined as a tuple $SFC = \langle V, S^{∗}, s_{0}, L^{∗}, pDv^{∗} \rangle$, where $V$ represents the set of variables, $S^{∗}$ represents the set of steps, $s_0$ represents the initial step of the SFC, and $L^{∗}$ represents the interior The set of instruction programs, $pDv^{∗}$ represents a collection of concurrent branch structures.
+
+      \ \ As described above, from an event-driven perspective, all ICML events can be considered as branches of the SFC program. That is, each branch of $pDV^*$ can be considered as an event in IMCL. So we use SFC as an architectural language to describe the structure of the entire system. In the body of the specific trigger event in the IMCL, we use the ST language in 61131-3 to describe the details of the event logic equivalently. For detailed rules, see Rule 3, Rule 4, and Rule 5.
+  \item \textbf{VHDL Language}: \ In VHDL, programs are represented in the form of architecture, and multiple events in a program can be represented using the process structure. Because in the architecture, each process is a program block, and all program blocks are parallel, it can equivalently represent each event with each process.
+
+      \ \ A process in an architecture can be regarded as a tuple $PROCESS = \langle name, V, cond^{*}, L^{*} \rangle$, where $name$ represents the process name and a representation of a process structure, then $V$ represents a collection of variables of the process, $cond^{*}$ indicates a trigger condition, and $L^{*}$ indicates a set of programs that are executed internally.
+
+      \ \ Since VHDL program architecture can be viewed as a collection of process. Each $T_i$ in $\overset{n}{\underset{i=1}{\bowtie}} T_{i}$ corresponds to a \emph{PROCESS}.
+  \item \textbf{C Language}: \ In C language, in order to represent multiple events and the concurrent relationship between events, we use \emph{thread} to represent the event.
+
+      \ \ All events are treated as a tuple $Thread = \langle id, V^*, L^* \rangle$, where $id$ indicates that the process is uniquely identified, $V^*$ indicates the data space of the thread, and $L^*$ identifies the thread's execution body.
+
+      \ \ In C language, the main body of the program can be seen as multiple parallel threads, each thread can be seen as an event task. Each $T_i$ in $\overset{n}{\underset{i=1}{\bowtie}} T_{i}$ is a Thread. A multi-event IMCL model can then be converted into a multi-threaded C program.
+\end{itemize}
+
+\paragraph{\textbf{Rule 3: }} Conversion of structured statement
+
+IMCL contains the conditional statement $if$. A Case statement in IMCL is defined as a tuple $\langle caseExp, caseBody^{∗} \rangle$ where \emph{caseExp} represents the expression of the case statement, \emph{caseBody} is defined as $\langle caseValue; L^* \rangle$, and \emph{caseValue} represents the value of the expression into the case clause, $L^*$ denotes List of statements executed by each case clause.
+
+IMCL contains loop statements $while$. A loop statement of IMCL is defined as a tuple $\langle whileExp; L^* \rangle$, where \emph{whileExp} represents the loop condition in the while statement $L^*$ represents a list of statements executed in each loop.
+
+Conditional statements and loop statements are the basic structures in the programming language. The semantics of the conditional structure and loop structure of all languages are equivalent. So IMCL and IEC 61131-3, VHDL, and C have common features in the \emph{if} and \emph{while} structures, and the conversion between them is direct and equivalent.
+
+
+\paragraph{\textbf{Rule 4: }} Conversion of communication
+
+The communication method in the system model is abstract. It only contains the communication method and communication content, but it does not care about the specific implementation details of the communication. The communication mode of IMCL abstract communication, such as protocols such as UART, ENHENT, SPI, does not pay attention to how the bottom layer is implemented. The bottom layer includes different links for communication, such as network ports and serial ports. All models can send content through the communication module to the channel through message binding. The subsystem that needs to receive the message will automatically obtain the data in the bound channel. Therefore, when researching code generation, communication functions need to be implemented for specific communication protocols between devices. In our research, we encapsulate the mainstream centralized communication protocol into a function interface. When users generate code, they only need to select the corresponding interface.
+
+According to the previously defined configuration $C_{map} = C_{imcl} \rightarrow (C_{plc} | C_{fpga} | C_{pc})$, we defined the interface under the communication rules as follows:
+% begin{tabular}{|p{1cm}|p{2cm}|p{3cm}|}
+\begin{table}[!htb]
+\centering
+% \tiny\tiny\scriptsize\footnotesize\small\normalsize\large\Large\LARGE\huge\Huge\footnotesize\small\normalsize\large\Large\LARGE\huge\Huge
+%\bahao
+\small
+%\caption{\label{ResourcesAllocation}Solutions that CUs are allocated with resources}
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+    \textbf{ } & \textbf{PLC(61131-3)} & \textbf{FPGA(VHDL)} &  \textbf{PC(C)} \\
+    \hline
+    \textbf{UART}   & ST\_UART & Entity\_UART & C\_UART \\
+    \textbf{Entherent} & ST\_Entherent & Entity\_Entherent & C\_Entherent \\
+    \textbf{SPI} & ST\_SPI & Entity\_SPI & C\_SPT \\
+    \textbf{...} & ... & ... & ... \\
+    \hline
+    \end{tabular}
+\end{table}
+
+In particular, since the ways in which the various controllers execute the programs are different, the expressiveness and manner of the program languages must be taken into account when converting between languages. Below we describe how the three languages convert IMCL message traffic.
+
+\begin{itemize}
+  \item \textbf{IEC 61131-3 Language}: The execution mode of the program main body cycle is $input\rightarrow processing\rightarrow output$, and the atomicity is continuous without interruption. A segment of the IMCL program is continuous and may contain input and output of messages in the intermediate process. Therefore, in order to convert the specific process of events in IMCL to ST language in IEC 61131-3, we use label to convert. The specific principle is: the main body of the IMCL event is divided into a plurality of phases with the communication statement as a mark, so that the ST program can be completed using several execution cycles.
+  \item \textbf{VHDL Language}: For all communication modules, we can use Entity. Regardless of UART or Entherent, we use the corresponding entity to achieve. For a specific communication protocol, we implement it as two entities: an accepting entity and a sending entity. For example, the Entity\_UART in the table indicates that for the UART communication mode, the specific communication process is implemented by one entity.
+  \item \textbf{C Language}:  For the code generation of the system to communicate with an external controller, we use an abstract interface to represent it. For different communication methods of different protocols, we divide the message into two parts: accept and send, and pre-implement their functions in the defined library. In the code generation, we call the specific communication function in the predefined library for code generation.
+\end{itemize}
+
+
+\paragraph{\textbf{Rule 3: }} Conversion of structured schedule
