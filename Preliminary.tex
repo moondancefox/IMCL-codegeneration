@@ -9,7 +9,12 @@ The IMCL modeling method is based on the idea of refinement: modeling system fun
 
 %下图表示的是使用 IMCL 简历一个复杂工控系统模型其系统结构，系统特性以元模型特点。
 
-TODO: fig IMCL
+\begin{figure}[!htb]
+  \centering
+        \includegraphics[height=1.4in, width=2.8in]{IMCLLayer}
+  \caption{IMCL Model}\label{IMCLLayer}
+\end{figure}
+
 
 \begin{itemize}
   \item \textbf{System Layer} The system layer embodies the intuitive composition of a model. Usually, the system is composed of modular or functional components. For heterogeneous systems in the field of industrial control, controllers or processors with computational control capabilities within them can all run independently of each other. From the overall behavior of the system, the operation process is highly concurrent.

@@ -102,6 +102,7 @@ Conditional statements and loop statements are the basic structures in the progr
 The communication method in the system model is abstract. It only contains the communication method and communication content, but it does not care about the specific implementation details of the communication. The communication mode of IMCL abstract communication, such as protocols such as UART, ENHENT, SPI, does not pay attention to how the bottom layer is implemented. The bottom layer includes different links for communication, such as network ports and serial ports. All models can send content through the communication module to the channel through message binding. The subsystem that needs to receive the message will automatically obtain the data in the bound channel. Therefore, when researching code generation, communication functions need to be implemented for specific communication protocols between devices. In our research, we encapsulate the mainstream centralized communication protocol into a function interface. When users generate code, they only need to select the corresponding interface.
 
 According to the previously defined configuration $C_{map} = C_{imcl} \rightarrow (C_{plc} | C_{fpga} | C_{pc})$, we defined the interface under the communication rules as follows:
+
 % begin{tabular}{|p{1cm}|p{2cm}|p{3cm}|}
 \begin{table}[!htb]
 \centering
@@ -130,4 +131,8 @@ In particular, since the ways in which the various controllers execute the progr
 \end{itemize}
 
 
-\paragraph{\textbf{Rule 3: }} Conversion of structured schedule
+\paragraph{\textbf{Rule 5: }} Conversion of schedule
+
+Physical resources of the physical device industrial control system environment is diverse, including the number of diversity, functional diversity. For the relation $D_{map} = D_{imcl} \rightarrow (D_{plc} | D_{fpga} | D_{soc})$, all device scheduling controls in the IMCL model use a formal representation, but when studying how to switch to a specific target device, it needs to be based on the actual controller and hardware Scheduling protocol to implement the scheduling function.
+
+
