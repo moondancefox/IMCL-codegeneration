@@ -62,18 +62,18 @@ Next we will introduce the specific details of these different rule conversions:
 %\end{itemize}
 
 
-\paragraph{\textbf{Rule 1: }} Conversion of variables
+\paragraph{\textbf{Rule 1: Conversion of variables}} \
 
 There are 5 forms of variables of the IMCL program. These variables cover the basic variable types of IEC 61131-3, VHDL, and C. According to the definition of$V_{map} = V_{imcl} \rightarrow (V_{plc} | V_{fpga}| V_{pc})$, all variables in different controller programs can be represented by \emph{global variables}, \emph{local variables}, and \emph{static variables}. For each controller program, it is converted into a specific variable type in the program, such as \emph{int}, \emph{string}, and so on.
 
-\paragraph{\textbf{Rule 2: }} Conversion of events
+\paragraph{\textbf{Rule 2: Conversion of events}} \
 
 The form of the IMCL IPC model is a set of events in which events are concurrent. After the trigger condition of any event is satisfied, the subject of the respective event will be executed. Different programming languages have different ways of expressing events, and they will be converted separately for each of the three languages:
 
 \begin{itemize}
   \item \textbf{IEC 61131-3 Language}: \ there is only SFC that expresses concurrency.
 
-      \ \ An SFC program is defined as a tuple $SFC = \langle V, S^{∗}, s_{0}, L^{∗}, pDv^{∗} \rangle$, where $V$ represents the set of variables, $S^{∗}$ represents the set of steps, $s_0$ represents the initial step of the SFC, and $L^{∗}$ represents the interior The set of instruction programs, $pDv^{∗}$ represents a collection of concurrent branch structures.
+      \ \ An SFC program is defined as a tuple $SFC = \langle V, S^{*}, s_{0}, L^{*}, pDv^{*} \rangle$, where $V$ represents the set of variables, $S^{*}$ represents the set of steps, $s_0$ represents the initial step of the SFC, and $L^{*}$ represents the interior The set of instruction programs, $pDv^{*}$ represents a collection of concurrent branch structures.
 
       \ \ As described above, from an event-driven perspective, all ICML events can be considered as branches of the SFC program. That is, each branch of $pDV^*$ can be considered as an event in IMCL. So we use SFC as an architectural language to describe the structure of the entire system. In the body of the specific trigger event in the IMCL, we use the ST language in 61131-3 to describe the details of the event logic equivalently. For detailed rules, see Rule 3, Rule 4, and Rule 5.
   \item \textbf{VHDL Language}: \ In VHDL, programs are represented in the form of architecture, and multiple events in a program can be represented using the process structure. Because in the architecture, each process is a program block, and all program blocks are parallel, it can equivalently represent each event with each process.
@@ -88,16 +88,16 @@ The form of the IMCL IPC model is a set of events in which events are concurrent
       \ \ In C language, the main body of the program can be seen as multiple parallel threads, each thread can be seen as an event task. Each $T_i$ in $\overset{n}{\underset{i=1}{\bowtie}} T_{i}$ is a Thread. A multi-event IMCL model can then be converted into a multi-threaded C program.
 \end{itemize}
 
-\paragraph{\textbf{Rule 3: }} Conversion of structured statement
+\paragraph{\textbf{Rule 3: Conversion of structured statement}} \
 
-IMCL contains the conditional statement $if$. A Case statement in IMCL is defined as a tuple $\langle caseExp, caseBody^{∗} \rangle$ where \emph{caseExp} represents the expression of the case statement, \emph{caseBody} is defined as $\langle caseValue; L^* \rangle$, and \emph{caseValue} represents the value of the expression into the case clause, $L^*$ denotes List of statements executed by each case clause.
+IMCL contains the conditional statement $if$. A Case statement in IMCL is defined as a tuple $\langle caseExp, caseBody^{*} \rangle$ where \emph{caseExp} represents the expression of the case statement, \emph{caseBody} is defined as $\langle caseValue; L^{*} \rangle$, and \emph{caseValue} represents the value of the expression into the case clause, $L^{*}$ denotes List of statements executed by each case clause.
 
 IMCL contains loop statements $while$. A loop statement of IMCL is defined as a tuple $\langle whileExp; L^* \rangle$, where \emph{whileExp} represents the loop condition in the while statement $L^*$ represents a list of statements executed in each loop.
 
 Conditional statements and loop statements are the basic structures in the programming language. The semantics of the conditional structure and loop structure of all languages are equivalent. So IMCL and IEC 61131-3, VHDL, and C have common features in the \emph{if} and \emph{while} structures, and the conversion between them is direct and equivalent.
 
 
-\paragraph{\textbf{Rule 4: }} Conversion of communication
+\paragraph{\textbf{Rule 4: Conversion of communication}} \
 
 The communication method in the system model is abstract. It only contains the communication method and communication content, but it does not care about the specific implementation details of the communication. The communication mode of IMCL abstract communication, such as protocols such as UART, ENHENT, SPI, does not pay attention to how the bottom layer is implemented. The bottom layer includes different links for communication, such as network ports and serial ports. All models can send content through the communication module to the channel through message binding. The subsystem that needs to receive the message will automatically obtain the data in the bound channel. Therefore, when researching code generation, communication functions need to be implemented for specific communication protocols between devices. In our research, we encapsulate the mainstream centralized communication protocol into a function interface. When users generate code, they only need to select the corresponding interface.
 
@@ -131,7 +131,7 @@ In particular, since the ways in which the various controllers execute the progr
 \end{itemize}
 
 
-\paragraph{\textbf{Rule 5: }} Conversion of schedule
+\paragraph{\textbf{Rule 5: Conversion of schedule}} \
 
 Physical resources of the physical device industrial control system environment is diverse, including the number of diversity, functional diversity. For the relation $D_{map} = D_{imcl} \rightarrow (D_{plc} | D_{fpga} | D_{soc})$, all device scheduling controls in the IMCL model use a formal representation, but when studying how to switch to a specific target device, it needs to be based on the actual controller and hardware Scheduling protocol to implement the scheduling function.
 

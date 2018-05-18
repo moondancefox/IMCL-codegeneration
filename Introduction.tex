@@ -1,19 +1,27 @@
 \section{Introduction}
 % no \IEEEPARstart
-This demo file is intended to serve as a ``starter file''
-for IEEE conference papers produced under \LaTeX\ using
-IEEEtran.cls version 1.8b and later.
-% You must have at least 2 lines in the paragraph with the drop letter
-% (should never be an issue)
-I wish you the best of success.
+Model-driven architecture (MDA) was proposed by the Object Management Group (OMG) in 2001. It is a software design approach which defines system functionality using a platform-independent model by an appropriate domain-specific language (DSL). By the abstraction of the DSL model, the system architecture can be represented by less code in DSL than other programming languages (Java, C++, C\#). Furthermore, programs written in domain-specific languages are easier to understand and even some of the DSLs are graphical languages, which can be used to eliminate the gap between the business logic and technology implementation. Since the model-driven architecture is platform-independent, many interpreters are developed to translate DSLs to platform-dependent languages, such as Simulink and MyGenerator. Also, many developing frames for automatic code generation are proposed, such as Acceleo, which is developed by OMG. With the development of the automatic code generation techniques, changes in system design will not lead to the irreparable impact on the development cycle. By using MDA in our developing process, we can not only perform the syntax checks or static code analysis on the program but also verify the functional properties of the program on the abstractive level, so as to reduce the errors in the implementation.
 
-\hfill mds
+Due to the fact that there are many heterogeneous devices in complex industrial control systems and their programs run on FPGAs, PLCs, or PCs, the testing of such industrial control systems faces lots of challenges. Since the MDA is platform-independent, we can use it to solve this testing problem. Therefore we proposed the modeling language IMCL in our previous work\cite{li2017decomposition}. This event-triggered language can describe the physical resources and the system in one unified model. And some reliable and efficient decomposition and collaboration algorithms can be performed based on IMCL models, which means the sub-models after decomposition can be used to represent the programs running on different platforms. Since the sub-models which represent programs running on different platforms are described in the abstract modeling language IMCL, we need to supply some missing details about the software and hardware configurations according to the different platforms before presenting a runnable solution on the specific platform.
 
-\hfill August 26, 2015
+In this paper, we propose resource layer to map the computing unit with the control computing capability to the physical resources in the system. Combining with this configuration, we present the formal model of our IMCL models and design some platform-specific rules to convert the sub-models into three kinds of languages (FPGA, PLC, and PC). With the help of IMCL, we can design the whole system in a unified form, decompose the system model consistently and generate multi-platform code automatically.
 
-\subsection{Subsection Heading Here}
-Subsection text here.
+\medskip
+\textbf{Outline}
+\medskip
+
+In ...
 
 
-\subsubsection{Subsubsection Heading Here}
-Subsubsection text here.
+\medskip
+\textbf{Related Work}
+\medskip
+
+%related work
+Nowadays Model Driven Development (MDD) is becoming more and more popular in the development of industrial control systems.  \cite{thramboulidis2011towards} proposed a model-driven IEC 61131-based development process. It discussed three notations (IEC 61499, UML and SysML) as candidates to model the industrial applications. Among the three languages, SysML can be used to define a completely graphical environment that will allow the industrial automation developer to create the model of the application and automatically transform it to IEC 61131 specification. Formal languages can be used for verification of systems and are therefore particularly popular in model-driven development. As a formal method for system-level modeling and analysis, \cite{rezazadeh2007redevelopment} chose Event-B to reconstruct a subset of the original specification of the CDIS system. This reconstruction overcame three key difficulties of the original formalization, namely the difficulty of comprehending the original specification, the lack of any mechanical proof of the consistency of the specification and the difficulty of dealing with distribution and atomicity refinement.
+
+As FPGA is used in many industrial devices, some automatic code generation researches about VHDL have been done by the researchers. \cite{guo2008efficient} presented the code generation part of ROCCC, and open framework built on the SUIF platform that compiles C programs to VHDL. It describes a novel and improved implementation of the smart buffer that (1) supports loops having multiple input and output arrays and (2) is more area and clock-cycle efficient. Compared with \cite{guo2008efficient}, \cite{moreira2010automatic} generated VHDL code from a more abstract modeling language UML. Currently, there are some works and commercial tools to generate source code from UML specifications to mainstream languages, such as C++ and Java. However, there are few works addressing the automatic source code generation for VHDL language. This work has developed a first set of mapping rules to generate VHDL from UML models. Besides, IEC 61131-3 language is widely used on the PLCs. Hence there are some techniques about code generation of IEC 61131-3 language. In \cite{vogel2005automatic}, an approach was developed, which allows to generate IEC 61131-3 code from an UML-model and to import it into soft-PLCs automatically. According to the approach, a prototype was used to demonstrate that automatic code  generation for automation technology can be achieved through pragmatic application of UML. An interesting work has been developed in \cite{music2005iec}, which describes a control logic implementation approach based on discrete event models in form of finite state machines and Petri nets. In this approach, a transformation of the models into an IEC 61131-3 compliant code that can be translated and download into a standard industrial PLC has been proposed.
+
+Most of the above MDD techniques can automatically generate code for a single platform and our research in this paper is to generate code for a variety of different system platforms.
+
+
