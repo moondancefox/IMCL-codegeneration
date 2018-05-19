@@ -62,6 +62,8 @@ Next we will introduce the specific details of these different rule conversions:
 %\end{itemize}
 
 
+
+
 \paragraph{\textbf{Rule 1: Conversion of variables}} \
 
 There are 5 forms of variables of the IMCL program. These variables cover the basic variable types of IEC 61131-3, VHDL, and C. According to the definition of$V_{map} = V_{imcl} \rightarrow (V_{plc} | V_{fpga}| V_{pc})$, all variables in different controller programs can be represented by \emph{global variables}, \emph{local variables}, and \emph{static variables}. For each controller program, it is converted into a specific variable type in the program, such as \emph{int}, \emph{string}, and so on.
@@ -90,9 +92,9 @@ The form of the IMCL IPC model is a set of events in which events are concurrent
 
 \paragraph{\textbf{Rule 3: Conversion of structured statement}} \
 
-IMCL contains the conditional statement $if$. A Case statement in IMCL is defined as a tuple $\langle caseExp, caseBody^{*} \rangle$ where \emph{caseExp} represents the expression of the case statement, \emph{caseBody} is defined as $\langle caseValue; L^{*} \rangle$, and \emph{caseValue} represents the value of the expression into the case clause, $L^{*}$ denotes List of statements executed by each case clause.
+IMCL contains the conditional statement \textbf{if}. A Case statement in IMCL is defined as a tuple $\langle caseExp, caseBody^{*} \rangle$ where \emph{caseExp} represents the expression of the case statement, \emph{caseBody} is defined as $\langle caseValue; L^{*} \rangle$, and \emph{caseValue} represents the value of the expression into the case clause, $L^{*}$ denotes List of statements executed by each case clause.
 
-IMCL contains loop statements $while$. A loop statement of IMCL is defined as a tuple $\langle whileExp; L^* \rangle$, where \emph{whileExp} represents the loop condition in the while statement $L^*$ represents a list of statements executed in each loop.
+IMCL contains loop statements \textbf{while}. A loop statement of IMCL is defined as a tuple $\langle whileExp; L^* \rangle$, where \emph{whileExp} represents the loop condition in the while statement $L^*$ represents a list of statements executed in each loop.
 
 Conditional statements and loop statements are the basic structures in the programming language. The semantics of the conditional structure and loop structure of all languages are equivalent. So IMCL and IEC 61131-3, VHDL, and C have common features in the \emph{if} and \emph{while} structures, and the conversion between them is direct and equivalent.
 
