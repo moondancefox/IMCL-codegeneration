@@ -1,5 +1,5 @@
 \section{Rules}
-The IMCL model has features such as event triggering, message communication, and resource scheduling. This section describes the conversion rules for converting IMCL models into PLC programs from the perspective of code generation. Common techniques for code generation are based on ASTs, and so are ours. The abstract syntax tree is also called the AST syntax tree, which is the tree structure corresponding to the source code syntax. That is, for source code in a specific programming language, statements in the source code are mapped to each node in the tree by constructing a syntax tree. In the tree structure on the basis of IMCL, given by the code generation rules, the model may be implemented to generate the code for the target platform.
+The IMCL model has features such as event triggering, message communication, and resource scheduling. This section describes the conversion rules for converting IMCL models into target-platform programs from the perspective of code generation. Common techniques for code generation are based on ASTs, and so are ours. The abstract syntax tree is also called the AST syntax tree, which is the tree structure corresponding to the source code syntax. That is, for source code in a specific programming language, statements in the source code are mapped to each node in the tree by constructing a syntax tree. In the tree structure on the basis of IMCL, given by the code generation rules, the model may be implemented to generate the code for the target platform.
 
 \begin{algorithm}[htb!]
 \SetKwInOut{Input}{input}
@@ -124,7 +124,7 @@ According to the previously defined configuration $C_{map} = C_{imcl} \rightarro
     \end{tabular}
 \end{table}
 
-In particular, since the ways in which the various controllers execute the programs are different, the expressiveness and manner of the program languages must be taken into account when converting between languages. Below we describe how the three languages convert IMCL message traffic.
+In particular, since the ways in which the various controllers execute the programs are different, the expressiveness and manner of the program languages must be taken into account when converting between languages. Below we describe how the three languages convert IMCL message.
 
 \begin{itemize}
   \item \textbf{IEC 61131-3 Language}: The execution mode of the program main body cycle is $input\rightarrow processing\rightarrow output$, and the atomicity is continuous without interruption. A segment of the IMCL program is continuous and may contain input and output of messages in the intermediate process. Therefore, in order to convert the specific process of events in IMCL to ST language in IEC 61131-3, we use label to convert. The specific principle is: the main body of the IMCL event is divided into a plurality of phases with the communication statement as a mark, so that the ST program can be completed using several execution cycles.
